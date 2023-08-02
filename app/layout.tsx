@@ -1,10 +1,18 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/common/theme-provider";
 import Header from "@/components/common/header";
+import { getAllPosts } from "@/lib/notion/getAllPosts";
 
-const inter = Inter({ subsets: ["latin"] });
+export async function generateStaticParams() {
+	const posts = await getAllPosts();
+	return Object.values(posts).map((categorizedPosts) => {
+		categorizedPosts.map((post) => ({
+			category: post.category,
+			slug: [...post.slug],
+		}));
+	});
+}
 
 export const metadata: Metadata = {
 	title: "Hyewon Kwak",

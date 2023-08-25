@@ -6,6 +6,7 @@ import { GitHubLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Separator } from "../separator/separator";
 
 const navLinks = [
 	{ path: "/", title: "Home" },
@@ -25,16 +26,24 @@ const Header = () => {
 							Hyewon Kwak
 						</span>
 					</a>
-					<nav className="flex items-center space-x-6 text-sm font-medium">
+					<nav className="flex items-center space-x-4 text-sm font-medium">
 						{navLinks.map((link, index) => (
-							<Link
-								key={link.path}
-								className={`transition-colors hover:text-foreground/80 text-foreground/${
-									pathname === link.path ? 80 : 60
-								}`}
-								href={link.path}>
-								{link.title}
-							</Link>
+							<>
+								<Link
+									key={link.path}
+									className={`transition-colors hover:text-foreground/80 text-foreground/${
+										pathname === link.path ? 80 : 60
+									}`}
+									href={link.path}>
+									{link.title}
+								</Link>
+								{index !== navLinks.length - 1 && (
+									<Separator
+										className="h-4"
+										orientation="vertical"
+									/>
+								)}
+							</>
 						))}
 					</nav>
 				</div>

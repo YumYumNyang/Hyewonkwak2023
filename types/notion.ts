@@ -12,11 +12,13 @@ export interface Post {
 	cover?: string;
 }
 
-export enum Category {
-	"ARTICLE" = "article",
-	"RECORD" = "record",
-	"WORK" = "work",
-}
+const CATEGORY = {
+	ARTICLE: "article",
+	RECORD: "record",
+	WORK: "work",
+} as const;
+
+export type Category = (typeof CATEGORY)[keyof typeof CATEGORY];
 
 export type CategorizedPosts = {
 	[key in Category]: Post[];

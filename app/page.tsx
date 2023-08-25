@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { getAllPosts } from "@/lib/notion/getAllPosts";
-import { Post } from "@/types/notion";
 
 export default function Home() {
 	return (

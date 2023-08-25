@@ -1,6 +1,5 @@
-import { CollectionQueryResult, ExtendedRecordMap, ID } from "notion-types";
+import { ExtendedRecordMap, ID } from "notion-types";
 import { idToUuid } from "notion-utils";
-import { convertToObject } from "typescript";
 
 export default function getAllPageIds(res: ExtendedRecordMap, viewId?: string) {
 	const collectionQuery = res.collection_query;

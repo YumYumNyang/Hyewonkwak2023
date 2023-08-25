@@ -63,9 +63,9 @@ export async function getAllPosts() {
 				return posts;
 			},
 			{
-				[Category.ARTICLE]: [],
-				[Category.RECORD]: [],
-				[Category.WORK]: [],
+				["article"]: [],
+				["record"]: [],
+				["work"]: [],
 			} as CategorizedPosts
 		);
 

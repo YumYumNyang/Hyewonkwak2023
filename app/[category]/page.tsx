@@ -4,7 +4,6 @@ import Article from "@/components/post/Article";
 import Record from "@/components/post/Record";
 import Work from "@/components/post/Work";
 import { Category } from "@/types/notion";
-import { getAllTags } from "@/lib/notion/getAllTags";
 
 const Posts = async ({
 	params,

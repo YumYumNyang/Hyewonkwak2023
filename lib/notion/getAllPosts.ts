@@ -36,6 +36,7 @@ export async function getAllPosts() {
 			const id = pageId;
 			const properties =
 				(await getPageProperties(id, block, schema)) || null;
+			properties.id = id;
 			properties.createdTime = new Date(
 				block[id].value?.created_time
 			).toString();

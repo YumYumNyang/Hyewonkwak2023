@@ -28,22 +28,14 @@ const Header = () => {
 					</a>
 					<nav className="flex items-center space-x-4 text-sm font-medium">
 						{navLinks.map((link, index) => (
-							<>
-								<Link
-									key={link.path}
-									className={`transition-colors hover:text-foreground/80 text-foreground/${
-										pathname === link.path ? 80 : 60
-									}`}
-									href={link.path}>
-									{link.title}
-								</Link>
-								{index !== navLinks.length - 1 && (
-									<Separator
-										className="h-4"
-										orientation="vertical"
-									/>
-								)}
-							</>
+							<Link
+								key={link.path}
+								className={`transition-colors font-bold hover:text-foreground/80 text-foreground/${
+									pathname === link.path ? 80 : 60
+								}`}
+								href={link.path}>
+								{link.title}
+							</Link>
 						))}
 					</nav>
 				</div>

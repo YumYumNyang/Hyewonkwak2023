@@ -40,13 +40,6 @@ export default function mapImageUrl(url: string, block: Block) {
 		}`;
 	}
 	const notionImageUrlV2 = new URL(url);
-	let table = block.parent_table === "space" ? "block" : block.parent_table;
-	if (table === "collection" || table === "team") {
-		table = "block";
-	}
-	notionImageUrlV2.searchParams.set("table", table);
-	notionImageUrlV2.searchParams.set("id", block.id);
-	notionImageUrlV2.searchParams.set("cache", "v2");
 
 	url = notionImageUrlV2.toString();
 

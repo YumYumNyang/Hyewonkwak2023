@@ -1,5 +1,6 @@
 import { Post } from "@/types/notion";
-import { useFrame } from "@react-three/fiber";
+import { useScroll } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useRouter } from "next/navigation";
 import React, { Ref, useMemo, useRef } from "react";
 import { Mesh } from "three";
@@ -33,13 +34,13 @@ const vertexShader = `
 
         vec4 modelPosition = modelMatrix * vec4(position, 1.0);
 
-        modelPosition.z += sin(modelPosition.x * 10.0 + u_time * 3.0 * u_intensity )  * 0.1;
-        modelPosition.z += sin(modelPosition.y * 6.0  + u_time * 2.0 * u_intensity  )  * 0.1;
+        modelPosition.z += sin(modelPosition.x * 10.0 + u_time * 3.0)* 0.1 * u_intensity;
+        modelPosition.z += sin(modelPosition.y * 6.0  + u_time * 2.0)* 0.1 * u_intensity;
         
         vWave = modelPosition.z;
 
         vec4 viewPosition = viewMatrix * modelPosition;
-        vec4 projectedPosition = projectionMatrix * viewPosition;
+        vec4 projectedPosition = projectionMatrix * viewPosition ;
 
         gl_Position = projectedPosition;
     }
@@ -48,6 +49,7 @@ const vertexShader = `
 const WavePlane = ({ post, index }: { post: Post; index: number }) => {
 	const mesh = useRef<Mesh>(null!);
 	const hover = useRef<boolean>(false);
+	const c = new THREE.Color();
 	const router = useRouter();
 	const uniforms = useMemo(
 		() => ({
@@ -62,30 +64,43 @@ const WavePlane = ({ post, index }: { post: Post; index: number }) => {
 				),
 			},
 			u_intensity: {
-				value: 0.3,
+				value: 0.5,
 			},
 		}),
 		[]
 	);
-
-	useFrame((state) => {
+	const { size } = useThree();
+	const scale = useMemo(() => Math.min(size.width / 1280, 1), [size]);
+	useFrame((state, delta) => {
 		const { clock } = state;
 		const material = mesh.current.material as THREE.ShaderMaterial;
 		material.uniforms.u_time.value = clock.getElapsedTime();
 		material.uniforms.u_intensity.value = MathUtils.lerp(
 			material.uniforms.u_intensity.value,
-			hover.current ? 0.8 : 0.3,
-			0.02
+			hover.current ? 1.7 : 0.5,
+			0.01
 		);
+		const newScale = MathUtils.damp(
+			mesh.current.scale.x,
+			hover.current ? 1.2 * scale : 1 * scale,
+			5,
+			delta
+		);
+		mesh.current.scale.set(newScale, newScale, 1);
 	});
 
 	return (
 		<mesh
 			ref={mesh}
-			position={[(index % 2 ? -1 : 1) * 0.8, 0, -0.8 * index + 10]}
+			position={[
+				(index % 2 ? -1 : 1) * 0.8 * scale,
+				-1.2 * index * scale + 1,
+				10,
+			]}
 			onPointerOver={() => (hover.current = true)}
 			onPointerOut={() => (hover.current = false)}
-			onClick={() => router.push(`work/${post.id}`)}>
+			onClick={() => router.push(`work/${post.id}`)}
+			scale={[scale, scale, 1]}>
 			<planeGeometry args={[1, 1, 32, 32]} />
 			<shaderMaterial
 				fragmentShader={fragmentShader}

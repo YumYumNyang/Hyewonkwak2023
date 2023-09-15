@@ -18,7 +18,7 @@ const navLinks = [
 const Header = () => {
 	const pathname = usePathname() || "";
 	return (
-		<header className="sticky top-0 z-40 w-full border-b supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
+		<header className="fixed top-0 z-40 w-full border-b supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
 			<div className="container flex items-center h-14">
 				<div className="hidden mr-4 md:flex">
 					<a className="flex items-center mr-6 space-x-2" href="/">

@@ -32,7 +32,7 @@ export default function RootLayout({
 					defaultTheme="system"
 					enableSystem>
 					<Header />
-					<main className="w-full h-full"> {children}</main>
+					<main className="w-full h-full pt-14"> {children}</main>
 				</ThemeProvider>
 			</body>
 		</html>

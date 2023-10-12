@@ -17,16 +17,16 @@ const navLinks = [
 const Header = () => {
   const pathname = usePathname() || '';
   return (
-    <header className="font-sansfixed top-0 z-40 w-full border-b supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
-      <div className="  p-4 max-w-screen-xl m-auto flex items-center justify-between h-14">
-        <div className="text-primary mr-4 md:flex">
+    <header className="fixed top-0 z-40 w-full font-sans border-b supports-backdrop-blur:bg-background/60 backdrop-blur ">
+      <div className="flex items-center justify-between max-w-screen-xl p-4 m-auto bg-transparent h-14">
+        <div className="mr-4 text-primary md:flex">
           <a className="flex items-center mr-6 space-x-2" href="/">
-            <span className="text-point-orange font-bold text-sm md:text-base">
+            <span className="text-sm font-bold text-point-orange md:text-base">
               Hyewon Kwak
             </span>
             <span className="text-xs md:text-sm">creative developer</span>
           </a>
-          <nav className="hidden flex items-center space-x-4 text-sm font-medium md:flex">
+          <nav className="flex items-center hidden space-x-4 text-sm font-medium md:flex">
             {navLinks.map((link, index) => (
               <Link
                 key={link.path}
@@ -40,7 +40,7 @@ const Header = () => {
             ))}
           </nav>
         </div>
-        <div className="flex items-center space-x-2 justify-end">
+        <div className="flex items-center justify-end space-x-2">
           <nav className="flex items-center">
             <button
               className="inline-flex items-center justify-center px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"

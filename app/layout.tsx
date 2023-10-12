@@ -25,16 +25,15 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<body>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem>
-					<Header />
-					<main className="w-full h-full pt-14"> {children}</main>
-				</ThemeProvider>
-			</body>
-		</html>
-	);
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <main className="w-full h-full pt-14 bg-neutral-50 bg-[url('../public/grain.svg')] ">
+            {children}
+          </main>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
 }

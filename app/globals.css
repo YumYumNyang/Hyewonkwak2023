@@ -171,8 +171,8 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: 'PPNeueMontreal';
   font: inherit;
+  font-family: 'PPNeueMontreal';
   background-repeat: no-repeat;
   vertical-align: baseline;
 }

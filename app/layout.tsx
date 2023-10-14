@@ -29,7 +29,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
-          <main className="w-full h-full pt-14 bg-neutral-50 bg-[url('../public/grain.svg')] ">
+          <main className="w-full h-full overflow-scroll  pt-14 box-border bg-neutral-50 dark:bg-neutral-950 bg-[url('../public/grain.svg')] ">
             {children}
           </main>
         </ThemeProvider>

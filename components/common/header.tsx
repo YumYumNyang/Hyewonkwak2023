@@ -17,7 +17,7 @@ const navLinks = [
 const Header = () => {
   const pathname = usePathname() || '';
   return (
-    <header className="fixed top-0 z-40 w-full font-sans border-b supports-backdrop-blur:bg-background/60 backdrop-blur ">
+    <header className="fixed top-0 z-40 w-full font-sans border-b backdrop-blur ">
       <div className="flex items-center justify-between max-w-screen-xl p-4 m-auto bg-transparent h-14">
         <div className="mr-4 text-primary md:flex">
           <a className="flex items-center mr-6 space-x-2" href="/">
@@ -26,7 +26,7 @@ const Header = () => {
             </span>
             <span className="text-xs md:text-sm">creative developer</span>
           </a>
-          <nav className="flex items-center hidden space-x-4 text-sm font-medium md:flex">
+          <nav className="items-center hidden space-x-4 text-sm font-medium md:flex">
             {navLinks.map((link, index) => (
               <Link
                 key={link.path}

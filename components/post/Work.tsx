@@ -8,19 +8,7 @@ import { OrbitControls, Scroll, ScrollControls } from '@react-three/drei';
 import WavesScene from '../three/WavesScene';
 
 const Work = ({ posts }: { posts: Post[] }) => {
-  return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      {/* <Canvas
-				camera={{
-					fov: 45,
-					near: 0.1,
-					far: 1000,
-					position: [0, 0, 14],
-				}}>
-				<WavesScene posts={posts} />
-			</Canvas> */}
-    </div>
-  );
+  return <div className="w-full h-full max-w-screen-xl m-auto"></div>;
 };
 
 export default Work;

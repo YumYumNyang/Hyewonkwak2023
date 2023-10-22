@@ -5,12 +5,12 @@ import React from "react";
 const Article = ({ posts }: { posts: Post[] }) => {
 	const tags = getAllTags(posts);
 	return (
-		<>
-			{posts.map((post) => (
-				<div key={post.id}>{post.title}</div>
-			))}
-		</>
-	);
+    <div className="w-full h-full max-w-screen-xl m-auto">
+      {posts.map((post) => (
+        <div key={post.id}>{post.title}</div>
+      ))}
+    </div>
+  );
 };
 
 export default Article;

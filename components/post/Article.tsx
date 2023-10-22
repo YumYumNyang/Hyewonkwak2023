@@ -1,11 +1,11 @@
-import { getAllTags } from "@/lib/notion/getAllTags";
-import { Post } from "@/types/notion";
-import React from "react";
+import { getAllTags } from '@/lib/notion/getAllTags';
+import { Post } from '@/types/notion';
+import React from 'react';
 
 const Article = ({ posts }: { posts: Post[] }) => {
-	const tags = getAllTags(posts);
-	return (
-    <div className="w-full h-full max-w-screen-xl m-auto">
+  const tags = getAllTags(posts);
+  return (
+    <div className="w-full h-full">
       {posts.map((post) => (
         <div key={post.id}>{post.title}</div>
       ))}

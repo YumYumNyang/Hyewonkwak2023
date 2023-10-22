@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React, { useEffect } from 'react';
 
 const Creating = () => {
   return (
@@ -16,7 +16,7 @@ const Creating = () => {
         </div>
         <p className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-left text-[#4851c4]">
           <span className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-left text-[#4851c4]">
-            I&apos;m frontend developer,{" "}
+            I&apos;m frontend developer,{' '}
           </span>
           <br />
           <span className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-left text-[#4851c4]">

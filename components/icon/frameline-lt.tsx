@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const FrameLineLT = ({ className }: { className: string }) => {
   return (
@@ -10,8 +10,8 @@ const FrameLineLT = ({ className }: { className: string }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <line y1="1" x2="180" y2="1" stroke="black" stroke-width="2" />
-      <line x1="1" y1="2" x2="1" y2="152" stroke="black" stroke-width="2" />
+      <line y1="1" x2="180" y2="1" stroke="black" strokeWidth="2" />
+      <line x1="1" y1="2" x2="1" y2="152" stroke="black" strokeWidth="2" />
     </svg>
   );
 };

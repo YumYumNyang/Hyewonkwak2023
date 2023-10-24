@@ -1,6 +1,6 @@
 export interface Post {
 	id: string;
-	date: { start_date: string };
+	date: string;
 	slug: string[];
 	tags?: string[];
 	summary?: string;

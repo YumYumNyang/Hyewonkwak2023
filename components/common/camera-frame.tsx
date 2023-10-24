@@ -22,7 +22,7 @@ const CameraFrame = ({ children }: { children: React.ReactNode }) => {
       <div className="z-50 pointer-events-none opacity-20 fixed bg-zinc-600 w-full h-[0.2px] top-[66vh]" />
       <div className="z-50 pointer-events-none opacity-20 fixed bg-zinc-600 top-0 w-[0.2px] h-full left-[33%]" />
       <div className="z-50 pointer-events-none opacity-20 fixed bg-zinc-600 top-0 w-[0.2px] h-full left-[66%]" />
-      <ScrollIndicator className="fixed z-50 bottom-2 left-[50%] ml-[-136px]" />
+      <ScrollIndicator className="fixed z-50 bottom-2 left-[50%] ml-[-136px] w-[273px] max-sm:w-[120px] max-sm:ml-[-60px] " />
       <CenterBox className="fixed z-52 left-[50%] top-[50vh] w-[100px] h-[60px] ml-[-50px] mt-[-30px] max-sm:opacity-50" />
       {children}
     </div>

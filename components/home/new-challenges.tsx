@@ -3,7 +3,7 @@ import React from 'react';
 
 const NewChallenges = () => {
   return (
-    <div className="relative flex flex-col items-start justify-start gap-2 mt-[200px]">
+    <div className="relative flex flex-col items-start justify-start gap-2 mt-[100px]">
       <p className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-left  md:max-lg:w-[280px] max-md:w-[200px] text-[#4851c4]">
         I always jump into new challenges because I like to see myself improving.
       </p>

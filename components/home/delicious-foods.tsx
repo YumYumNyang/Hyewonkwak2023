@@ -1,10 +1,10 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 const DeliciousFoods = () => {
   return (
-    <div className="flex flex-col gap-[53px]">
-      <div className="flex flex-col justify-start items-end pl-[368px] md:max-lg:pl-[268px] max-md:pl-[208px] top-0 gap-2">
+    <div className="flex flex-col gap-[53px] mt-[80px]">
+      <div className="flex flex-col justify-start items-end pl-[368px] md:max-lg:pl-[268px] sm:max-md:pl-[208px] max-sm:pl-[100px] top-0 gap-2">
         <p className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-left text-[#4851c4]">
           my fav burgurshop in yangjae.
         </p>
@@ -32,7 +32,7 @@ const DeliciousFoods = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col justify-start items-end pl-[296px] md:max-lg:pl-[196px] max-md:pl-[136px]  gap-2 pr-[124px]">
+      <div className="flex flex-col justify-start items-end pl-[296px] sm:max-lg:pl-[196px] max-sm:pl-[136px]  gap-2 pr-[124px] max-sm:pr-[32px]">
         <p className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-right text-[#4851c4]">
           <span className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-right text-[#4851c4]">
             sushi and raw fish is my all-time favorite.

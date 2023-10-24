@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 const Creating = () => {
   return (
     <>
-      <div className="relative flex flex-col items-start justify-start flex-grow-0 flex-shrink-0 gap-2">
+      <div className="relative flex flex-col items-start justify-start flex-grow-0 flex-shrink-0 gap-2 mt-[100px]">
         <div className="flex-grow-0 flex-shrink-0 w-[306px] h-[306px] md:max-lg:w-[280px] md:max-lg:h-[280px] sm:max-md:w-[200px] sm:max-md:h-[200px] max-sm:w-[160px] max-sm:h-[160px] relative overflow-hidden bg-white">
           <Image
             layout="fill"

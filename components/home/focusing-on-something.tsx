@@ -1,10 +1,10 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 const FocusingOnSomething = () => {
   return (
     <div className="flex flex-col gap-[44px] mt-[80px]">
-      <div className="flex flex-col justify-start items-start gap-2 pl-[180px] sm:max-md:pl-[100px]">
+      <div className="flex flex-col justify-start items-start gap-2 pl-[180px] sm:max-md:pl-[100px] max-sm:pl-[80px]">
         <p className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-left text-[#4851c4]">
           I can find real fun in the moment of immersion.
         </p>

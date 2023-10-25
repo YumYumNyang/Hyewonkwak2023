@@ -1,12 +1,26 @@
-import { Post } from "@/types/notion";
-import React, { useEffect } from "react";
+import { Post, PostDetail } from "@/types/notion";
+import React, { cache } from "react";
+import "react-notion-x/src/styles.css";
+import api from "@/lib/notion/request";
+import Link from "next/link";
 
-const Record = ({ posts }: { posts: Post[] }) => {
+interface PostDict {
+	[id: string]: PostDetail;
+}
+const Record = async ({ posts }: { posts: Post[] }) => {
+	const postDetails = posts.reduce((acc: PostDict, post: Post) => {
+		acc[post.id] = { id: post.id, post: post, recordMap: null };
+		return acc;
+	}, {} as PostDict);
 	return (
 		<div className="min-h-full pt-20">
-			{posts.map((post) => (
-				<div key={post.id}>{post.title}</div>
-			))}
+			{posts.map((post: Post) => {
+				return (
+					<div>
+						<Link href={`/record/${post.slug}`}>{post.title}</Link>
+					</div>
+				);
+			})}
 		</div>
 	);
 };

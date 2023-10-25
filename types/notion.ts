@@ -1,3 +1,5 @@
+import { ExtendedRecordMap } from "notion-types";
+
 export interface Post {
 	id: string;
 	date: string;
@@ -10,6 +12,11 @@ export interface Post {
 	category: Category;
 	private: boolean;
 	cover?: string;
+}
+export interface PostDetail {
+	id: string;
+	post: Post;
+	recordMap: ExtendedRecordMap | null;
 }
 
 const CATEGORY = {

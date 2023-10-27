@@ -13,11 +13,15 @@ const PostItem = async ({
 }) => {
 	const posts = await getAllPosts();
 	const { category } = params;
+
 	const categorizedPosts = {
-		article: <ArticleItem slug={params.slug} posts={posts.work} />,
-		record: <RecordList slug={params.slug} posts={posts.record} />,
-		work: <WorkItem slug={params.slug} posts={posts.work} />,
-	} as { [key in Category]: React.ReactNode };
+    /* @ts-expect-error Server Component */
+    article: <ArticleItem slug={params.slug} posts={posts.work} />,
+    /* @ts-expect-error Server Component */
+    record: <RecordList slug={params.slug} posts={posts.record} />,
+    /* @ts-expect-error Server Component */
+    work: <WorkItem slug={params.slug} posts={posts.work} />,
+  } as { [key in Category]: React.ReactNode };
 	return <>{categorizedPosts[category]}</>;
 };
 

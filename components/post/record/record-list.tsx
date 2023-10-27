@@ -12,19 +12,16 @@ const RecordList = async ({ posts, slug }: { slug: string; posts: Post[] }) => {
 			<div className="min-h-full pt-20">
 				{posts.map((post: Post) => {
 					return (
-						<>
-							<div>
-								<Link href={`/record/${post.slug}`}>
-									{post.title}
-								</Link>
-							</div>
-						</>
-					);
+            <div key={post.id}>
+              <Link href={`/record/${post.slug}`}>{post.title}</Link>
+            </div>
+          );
 				})}
 				<RecordRenderer recordMap={postRecordMap} />
 			</div>
 		);
 	}
+  return <></>;
 };
 
 export default RecordList;

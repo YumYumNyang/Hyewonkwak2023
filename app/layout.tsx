@@ -25,11 +25,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<body>
-				{/* <CameraFrame>{children}</CameraFrame> */}
-				{children}
-			</body>
-		</html>
-	);
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <CameraFrame>{children}</CameraFrame>
+      </body>
+    </html>
+  );
 }

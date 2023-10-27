@@ -3,7 +3,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="flex justify-around max-sm:flex-col-reverse max-w-screen-xl px-10 pt-40 m-auto">
+    <div className="flex justify-around max-w-screen-xl px-10 pt-40 m-auto max-sm:flex-col-reverse">
       <div className="flex flex-col">
         <span>
           <span className="flex align-bottom">
@@ -56,9 +56,7 @@ const About = () => {
         </span>
       </div>
       <div className="my-10 flex-grow-0 flex-shrink-0 w-[400px] h-[300px] md:max-lg:w-[360px] md:max-lg:h-[270px] max-md:w-[320px] max-md:h-[240px] relative overflow-hidden bg-white">
-        <Image
-          layout="fill"
-          objectFit="cover"
+        <img
           src="/about/hyewon.jpg"
           alt="I always jump into new challenges because I like to see myself
         improving."

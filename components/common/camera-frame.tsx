@@ -1,12 +1,12 @@
-import React from 'react';
-import FrameInline from '../icon/frame-inline';
-import FrameLineLB from '../icon/frameline-lb';
-import FrameLineLT from '../icon/frameline-lt';
-import FrameLineRB from '../icon/frameline-rb';
-import FrameLineRT from '../icon/frameline-rt';
-import Header from './header';
-import ScrollIndicator from '../icon/scroll-indicator';
-import CenterBox from '../icon/center-box';
+import React from 'react'
+import FrameInline from '../icon/frame-inline'
+import FrameLineLB from '../icon/frameline-lb'
+import FrameLineLT from '../icon/frameline-lt'
+import FrameLineRB from '../icon/frameline-rb'
+import FrameLineRT from '../icon/frameline-rt'
+import Header from './header'
+import ScrollIndicator from '../icon/scroll-indicator'
+import CenterBox from '../icon/center-box'
 
 const CameraFrame = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -26,7 +26,7 @@ const CameraFrame = ({ children }: { children: React.ReactNode }) => {
       <CenterBox className="fixed z-52 left-[50%] top-[50vh] w-[100px] h-[60px] ml-[-50px] mt-[-30px] max-sm:opacity-50" />
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default CameraFrame;
+export default CameraFrame

@@ -1,47 +1,47 @@
-import gsap from "gsap";
-import Image from "next/image";
-import React, { useLayoutEffect, useRef } from "react";
+import gsap from 'gsap'
+import Image from 'next/image'
+import React, { useLayoutEffect, useRef } from 'react'
 
 const DeliciousFoods = () => {
-  const comp = useRef<HTMLDivElement>(null);
+  const comp = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap
         .timeline()
         .from(
-          ".item-1 img",
+          '.item-1 img',
           {
-            translateY: "-100%",
-            filter: "brightness(0.4)",
-            ease: "power2.out",
+            translateY: '-100%',
+            filter: 'brightness(0.4)',
+            ease: 'power2.out',
             duration: 1.4,
           },
-          "0.4"
+          '0.4',
         )
         .from(
-          ".item-2 img",
+          '.item-2 img',
           {
-            translateY: "100%",
-            filter: "brightness(0.4)",
-            ease: "power2.out",
+            translateY: '100%',
+            filter: 'brightness(0.4)',
+            ease: 'power2.out',
             duration: 1.0,
           },
-          "<+0.4"
+          '<+0.4',
         )
         .from(
-          ".item-3 img",
+          '.item-3 img',
           {
-            translateY: "-100%",
-            filter: "brightness(0.4)",
-            ease: "power2.out",
+            translateY: '-100%',
+            filter: 'brightness(0.4)',
+            ease: 'power2.out',
             duration: 1.4,
           },
-          "<+0.4"
-        );
-    }, comp);
+          '<+0.4',
+        )
+    }, comp)
 
-    return () => ctx.revert(); // cleanup
-  }, []);
+    return () => ctx.revert() // cleanup
+  }, [])
   return (
     <div ref={comp} className="flex flex-col gap-[53px] mt-[80px]">
       <div className="item-1 flex flex-col justify-start items-end pl-[368px] md:max-lg:pl-[268px] sm:max-md:pl-[208px] max-sm:pl-[100px] top-0 gap-2">
@@ -96,7 +96,7 @@ const DeliciousFoods = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DeliciousFoods;
+export default DeliciousFoods

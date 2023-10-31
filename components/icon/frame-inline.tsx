@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const FrameInline = ({ className }: { className: string }) => {
-  return <div className={className} />;
-};
+  return <div className={className} />
+}
 
-export default FrameInline;
+export default FrameInline

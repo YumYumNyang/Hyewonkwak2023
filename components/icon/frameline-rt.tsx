@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const FrameLineRT = ({ className }: { className: string }) => {
   return (
@@ -27,7 +27,7 @@ const FrameLineRT = ({ className }: { className: string }) => {
         strokeWidth="2"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default FrameLineRT;
+export default FrameLineRT

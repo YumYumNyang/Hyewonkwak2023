@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const CenterBox = ({ className }: { className: string }) => {
   return (
@@ -89,10 +89,15 @@ const CenterBox = ({ className }: { className: string }) => {
           strokeOpacity="0.5"
           strokeWidth="0.8"
         />
-        <path d="M52.0054 40V24" stroke="black" strokeOpacity="0.5" strokeWidth="0.8" />
+        <path
+          d="M52.0054 40V24"
+          stroke="black"
+          strokeOpacity="0.5"
+          strokeWidth="0.8"
+        />
       </g>
     </svg>
-  );
-};
+  )
+}
 
-export default CenterBox;
+export default CenterBox

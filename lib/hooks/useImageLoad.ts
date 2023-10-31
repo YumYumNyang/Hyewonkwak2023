@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
 const useImageLoad = (images: string[]) => {
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false)
   useEffect(() => {
     const imagePromises = images.map(
       (src) =>
         new Promise((resolve, reject) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = resolve;
+          const img = new Image()
+          img.src = src
+          img.onload = resolve
           img.onerror = () => {
-            reject(src);
-          };
-        })
-    );
+            reject(src)
+          }
+        }),
+    )
 
     Promise.all(imagePromises)
       .then(() => {
-        setImagesLoaded(true);
+        setImagesLoaded(true)
       })
       .catch((error) => {
-        console.error("Image loading failed", error);
-      });
-  }, []);
-  return imagesLoaded;
-};
+        console.error('Image loading failed', error)
+      })
+  }, [])
+  return imagesLoaded
+}
 
-export default useImageLoad;
+export default useImageLoad

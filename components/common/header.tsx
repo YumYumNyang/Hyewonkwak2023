@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import React from 'react';
-import { ModeToggle } from '../toggle/mode-toggle';
-import { GitHubLogoIcon, InstagramLogoIcon } from '@radix-ui/react-icons';
-import { Button } from '../ui/button';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import dayjs from 'dayjs';
+import React from 'react'
+import { ModeToggle } from '../toggle/mode-toggle'
+import { GitHubLogoIcon, InstagramLogoIcon } from '@radix-ui/react-icons'
+import { Button } from '../ui/button'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import dayjs from 'dayjs'
 
 const navLinks = [
   { path: '/', title: 'Index' },
@@ -14,14 +14,17 @@ const navLinks = [
   { path: '/work', title: 'Works' },
   { path: '/article', title: 'Articles' },
   { path: '/record', title: 'Records' },
-] as { path: string; title: string }[];
+] as { path: string; title: string }[]
 
 const Header = () => {
-  const pathname = usePathname() || '';
+  const pathname = usePathname() || ''
 
   return (
     <header className="box-border fixed top-0 z-40 flex w-full h-20 font-sans border-b backdrop-blur">
-      <a className="flex px-6 pt-6 space-x-2 md:pt-8 align-center md:px-10" href="/">
+      <a
+        className="flex px-6 pt-6 space-x-2 md:pt-8 align-center md:px-10"
+        href="/"
+      >
         <span className="text-[10px] font-bold">Hyewon Kwak</span>
         <span className="text-[10px]">creative developer</span>
       </a>
@@ -42,7 +45,7 @@ const Header = () => {
         ))}
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -1,24 +1,24 @@
-import Image from 'next/image';
-import gsap from "gsap";
-import React, { useLayoutEffect, useRef } from "react";
+import Image from 'next/image'
+import gsap from 'gsap'
+import React, { useLayoutEffect, useRef } from 'react'
 const NewChallenges = () => {
-  const comp = useRef<HTMLDivElement>(null);
+  const comp = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap.timeline().from(
-        ".item-1 img",
+        '.item-1 img',
         {
-          translateY: "-100%",
-          filter: "brightness(0.4)",
-          ease: "power2.out",
+          translateY: '-100%',
+          filter: 'brightness(0.4)',
+          ease: 'power2.out',
           duration: 1.4,
         },
-        "0.4"
-      );
-    }, comp);
+        '0.4',
+      )
+    }, comp)
 
-    return () => ctx.revert(); // cleanup
-  }, []);
+    return () => ctx.revert() // cleanup
+  }, [])
   return (
     <div
       ref={comp}
@@ -45,7 +45,7 @@ const NewChallenges = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NewChallenges;
+export default NewChallenges

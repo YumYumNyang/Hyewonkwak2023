@@ -1,6 +1,6 @@
-"use client";
-import Home from "@/components/home";
+'use client'
+import Home from '@/components/home'
 
 export default function Index() {
-  return <Home />;
+  return <Home />
 }

@@ -1,46 +1,46 @@
-import gsap from "gsap";
-import Image from "next/image";
-import React, { useLayoutEffect, useRef } from "react";
+import gsap from 'gsap'
+import Image from 'next/image'
+import React, { useLayoutEffect, useRef } from 'react'
 
 const Travling = () => {
-  const comp = useRef<HTMLDivElement>(null);
+  const comp = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap
         .timeline()
         .from(
-          ".item-1 img",
+          '.item-1 img',
           {
-            translateY: "-100%",
-            filter: "brightness(0.4)",
-            ease: "power2.out",
+            translateY: '-100%',
+            filter: 'brightness(0.4)',
+            ease: 'power2.out',
             duration: 1.4,
           },
-          "0.4"
+          '0.4',
         )
         .from(
-          ".item-2 img",
+          '.item-2 img',
           {
-            translateY: "100%",
-            filter: "brightness(0.4)",
-            ease: "power2.out",
+            translateY: '100%',
+            filter: 'brightness(0.4)',
+            ease: 'power2.out',
             duration: 1.0,
           },
-          "<+0.4"
+          '<+0.4',
         )
         .from(
-          ".item-3 img",
+          '.item-3 img',
           {
-            translateY: "100%",
-            filter: "brightness(0.4)",
-            ease: "power2.out",
+            translateY: '100%',
+            filter: 'brightness(0.4)',
+            ease: 'power2.out',
             duration: 1.0,
           },
-          "<+0.4"
-        );
-    }, comp);
-    return () => ctx.revert(); // cleanup
-  }, []);
+          '<+0.4',
+        )
+    }, comp)
+    return () => ctx.revert() // cleanup
+  }, [])
 
   return (
     <div ref={comp} className="flex flex-col">
@@ -92,7 +92,7 @@ const Travling = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Travling;
+export default Travling

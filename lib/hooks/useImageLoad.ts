@@ -22,7 +22,7 @@ const useImageLoad = (images: string[]) => {
       .catch((error) => {
         console.error('Image loading failed', error)
       })
-  }, [])
+  }, [images])
   return imagesLoaded
 }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ModeToggle } from '../toggle/mode-toggle'
 import { GitHubLogoIcon, InstagramLogoIcon } from '@radix-ui/react-icons'
 import { Button } from '../ui/button'
@@ -18,6 +18,11 @@ const navLinks = [
 
 const Header = () => {
   const pathname = usePathname() || ''
+  const [date, setDate] = useState<string>('')
+  useEffect(() => {
+    setDate(dayjs().format('YYYY MMM DD'))
+  }, [])
+  
 
   return (
     <header className="box-border fixed top-0 z-40 flex w-full h-20 font-sans border-b backdrop-blur">
@@ -29,7 +34,7 @@ const Header = () => {
         <span className="text-[10px]">creative developer</span>
       </a>
       <div className="absolute flex justify-center w-full text-[10px] top-6">
-        {dayjs().format('YYYY MMM DD')}
+        {date}
       </div>
       <nav className="absolute flex justify-center w-full gap-4 text-sm sm:text-base top-12">
         {navLinks.map((link, index) => (

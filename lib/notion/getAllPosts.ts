@@ -59,7 +59,9 @@ export const getAllPosts = cache(async () => {
     const categorizedPosts: CategorizedPosts = postedPosts.reduce(
       (posts: CategorizedPosts, post: Post) => {
         const category = post.category as Category
-        posts[category].push(post)
+        if (category) {
+          posts[category].push(post)
+        }
         return posts
       },
       {

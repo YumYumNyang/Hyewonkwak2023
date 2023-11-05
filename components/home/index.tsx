@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import AllKindsofDrinks from './all-kinds-of-drinks'
 import BeautifulThings from './beautiful-things'
 import Creating from './creating'
@@ -39,7 +45,7 @@ const images = [
   'water/02.png',
 ]
 const Home = () => {
-  const [activeIndex, setActiveIndex] = useState(7)
+  const [activeIndex, setActiveIndex] = useState(8)
   const imageLoaded = useImageLoad(images)
   const content = useMemo(() => {
     return [
@@ -57,14 +63,21 @@ const Home = () => {
     ]
   }, [])
   const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (imageLoaded) {
       let ctx = gsap.context(() => {
-        gsap.timeline().from('.title', {
-          paddingTop: '100%',
-          stagger: 0.1,
-          ease: 'sine.out',
-        })
+        gsap.timeline().fromTo(
+          '.title',
+          {
+            paddingTop: '100%',
+          },
+          {
+            paddingTop: '0%',
+            stagger: 0.2,
+            ease: 'power2.out',
+            duration: 0.8,
+          },
+        )
       }, ref)
       return () => ctx.revert() // cleanup
     }
@@ -82,7 +95,7 @@ const Home = () => {
           <h1
             onClick={() => setActiveIndex(index)}
             className={cx(
-              `flex items-center overflow-hidden whitespace-nowrap transition-[font-size] duration-500 ease-out origin-left hover:text-[#EB5849] h-[46px] hover:text-[42px] pt-1 text-[32px] font-medium text-left cursor-pointer lg:max-xl:text-[28px]   lg:max-xl:hover:text-[36px] lg:max-xl:h-[42px] sm:max-lg:text-[24px]  sm:max-lg:hover:text-[32px] sm:max-lg:h-[38px]  max-sm:text-[28px] max-sm:hover:text-[36px] max-sm:h-[42px]`,
+              `flex items-center overflow-hidden whitespace-nowrap transition-[font-size] duration-500 ease-out origin-left hover:text-[#EB5849] h-[50px] hover:text-[42px] pt-1 text-[32px] font-medium text-left cursor-pointer lg:max-xl:text-[28px]   lg:max-xl:hover:text-[36px] lg:max-xl:h-[42px] sm:max-lg:text-[24px]  sm:max-lg:hover:text-[32px] sm:max-lg:h-[38px]  max-sm:text-[28px] max-sm:hover:text-[36px] max-sm:h-[42px]`,
               {
                 'text-[#EB5849] text-[42px] lg:max-xl:text-[36px] sm:max-lg:text-[32px] max-sm:text-[36px] ':
                   activeIndex === index,

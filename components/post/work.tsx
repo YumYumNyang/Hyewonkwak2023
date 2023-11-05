@@ -9,11 +9,9 @@ const Work = ({ posts }: { posts: Post[] }) => {
     <div>
       {posts.map((post: Post) => {
         return (
-          <>
-            <div>
-              <Link href={`/work/${post.slug}`}>{post.title}</Link>
-            </div>
-          </>
+          <div key={post.id}>
+            <Link href={`/work/${post.slug}`}>{post.title}</Link>
+          </div>
         )
       })}
     </div>

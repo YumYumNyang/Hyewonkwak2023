@@ -39,14 +39,12 @@ const Routine = () => {
       className="flex flex-col justify-start items-start gap-[63px] mt-[100px]"
     >
       <div className="relative flex flex-col items-start justify-start flex-grow-0 flex-shrink-0 gap-2 item-1">
-        <p className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-left text-[#4851c4]">
-          <HomeDesc
-            delay={0.4}
-            desc={
-              'Routine makes me sustain healthy life. \n I go swimming every twice a week.'
-            }
-          />
-        </p>
+        <HomeDesc
+          delay={0.4}
+          desc={
+            'Routine makes me sustain healthy life. \n I go swimming every twice a week.'
+          }
+        />
         <div className="flex-grow-0 flex-shrink-0  w-[380px] h-[220px] md:max-lg:w-[285px] md:max-lg:h-[165px] max-md:w-[280px] max-md:h-[165px] relative overflow-hidden bg-white">
           <img
             alt="Routine makes me sustain healthy life."

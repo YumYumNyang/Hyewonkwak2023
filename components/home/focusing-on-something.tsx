@@ -34,7 +34,10 @@ const FocusingOnSomething = () => {
     return () => ctx.revert() // cleanup
   }, [])
   return (
-    <div ref={comp} className="flex flex-col gap-[44px] mt-[80px]">
+    <div
+      ref={comp}
+      className="flex flex-col gap-[44px] mt-[80px] max-sm:mt-[180px]"
+    >
       <div className="item-1 flex flex-col justify-start items-start gap-2 pl-[180px] sm:max-md:pl-[100px] max-sm:pl-[80px]">
         <HomeDesc
           delay={0.6}

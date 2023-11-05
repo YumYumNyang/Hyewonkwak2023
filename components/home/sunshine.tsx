@@ -24,7 +24,7 @@ const Sunshine = () => {
   return (
     <div
       ref={comp}
-      className="item-1 flex flex-col justify-center items-center gap-[8px] mt-[200px]"
+      className="item-1 flex flex-col justify-center items-center gap-[8px] mt-[200px] max-sm:mt-[180px] "
     >
       <div className="flex-grow-0 flex-shrink-0 w-[400px] h-[400px] md:max-lg:w-[300px] md:max-lg:h-[300px] max-md:w-[280px] max-md:h-[280px]  relative overflow-hidden bg-white">
         <img

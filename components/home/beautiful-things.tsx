@@ -45,7 +45,7 @@ const BeautifulThings = () => {
   }, [])
   return (
     <div ref={comp}>
-      <div className="flex flex-col items-start justify-center gap-2 mt-20 item-1">
+      <div className="flex flex-col items-start justify-center gap-2 mt-20 item-1 max-sm:mt-[180px]">
         <div className="flex-grow-0 flex-shrink-0 w-[620px] h-[320px] md:max-lg:w-[465px] md:max-lg:h-[240px] max-md:w-[310px] max-md:h-[160px] overflow-hidden bg-white">
           <img
             alt=" In Natalie Karpushenko photo exhibition 2023.05"

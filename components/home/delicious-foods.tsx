@@ -46,9 +46,9 @@ const DeliciousFoods = () => {
   return (
     <div
       ref={comp}
-      className="flex flex-col gap-[53px] mt-[60px] max-sm:mt-[100px]"
+      className="flex flex-col items-start gap-[53px] mt-[60px] max-sm:mt-[180px] "
     >
-      <div className="item-1 flex flex-col justify-start items-end pl-[368px] md:max-lg:pl-[268px] sm:max-md:pl-[208px] max-sm:pl-[100px] top-0 gap-2">
+      <div className="item-1 flex flex-col justify-end items-end pl-[368px] md:max-lg:pl-[268px] sm:max-md:pl-[208px] max-sm:pl-[0px]  max-sm:mr-[80px] top-0 gap-2">
         <HomeDesc
           className="justify-end"
           delay={0.4}
@@ -62,7 +62,7 @@ const DeliciousFoods = () => {
           />
         </div>
       </div>
-      <div className="item-2 flex flex-col justify-start items-start pl-[-2px] gap-2">
+      <div className="item-2 flex flex-col justify-start items-start pl-[-2px] max-sm:pl-[80px] gap-2">
         <HomeDesc
           delay={0.8}
           desc={'I’m interested in foods from different countries.'}
@@ -75,7 +75,7 @@ const DeliciousFoods = () => {
           />
         </div>
       </div>
-      <div className="item-3 flex flex-col justify-start items-end pl-[296px] sm:max-lg:pl-[196px] max-sm:pl-[136px]  gap-2 pr-[124px] max-sm:pr-[32px]">
+      <div className="item-3 flex flex-col justify-start items-end pl-[196px] sm:max-lg:pl-[86px] max-sm:pl-[136px] gap-2 max-sm:pr-[32px]">
         <HomeDesc
           className="justify-end"
           delay={1.2}

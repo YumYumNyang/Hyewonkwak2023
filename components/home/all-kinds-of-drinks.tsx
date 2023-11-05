@@ -36,7 +36,7 @@ const AllKindsofDrinks = () => {
   return (
     <div
       ref={comp}
-      className="flex justify-start items-start gap-[50px] md:max-lg:gap-[20px] max-md:gap-[10px] mt-[80px]"
+      className="flex justify-start items-start gap-[50px] md:max-lg:gap-[20px] max-md:gap-[10px] mt-[80px] max-sm:mt-[180px]"
     >
       <div className="item-1 flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2 pt-[431px] w-[320px] md:max-lg:w-[240px] sm:max-md:w-[200px] max-sm:w-[180px] max-sm:pt-[240px] ">
         <HomeDesc

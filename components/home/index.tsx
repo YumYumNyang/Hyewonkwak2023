@@ -88,16 +88,16 @@ const Home = () => {
   ) : (
     <div
       ref={ref}
-      className="flex justify-end h-full max-w-screen-xl mx-auto max-sm:flex-col max-sm:justify-start"
+      className="relative flex justify-end h-full max-w-screen-xl mx-auto max-sm:flex-col max-sm:justify-start"
     >
       <div className="absolute left-0 z-10 top-[20vh] flex flex-col max-sm:top-[100px] pl-10 ">
         {content.map((item, index) => (
           <h1
             onClick={() => setActiveIndex(index)}
             className={cx(
-              `flex items-center overflow-hidden whitespace-nowrap transition-[font-size] duration-500 ease-out origin-left hover:text-[#EB5849] h-[50px] hover:text-[42px] pt-1 text-[32px] font-medium text-left cursor-pointer lg:max-xl:text-[28px]   lg:max-xl:hover:text-[36px] lg:max-xl:h-[42px] sm:max-lg:text-[24px]  sm:max-lg:hover:text-[32px] sm:max-lg:h-[38px]  max-sm:text-[28px] max-sm:hover:text-[36px] max-sm:h-[42px]`,
+              `flex items-center overflow-hidden whitespace-nowrap transition-[font-size] duration-500 ease-out origin-left hover:text-[#EB5849] h-[50px] hover:text-[42px] pt-1 text-[32px] font-medium text-left cursor-pointer lg:max-xl:text-[28px]   lg:max-xl:hover:text-[36px] lg:max-xl:h-[42px] sm:max-lg:text-[24px]  sm:max-lg:hover:text-[32px] sm:max-lg:h-[38px]  max-sm:text-[28px] max-sm:hover:text-[34px] max-sm:h-[40px]`,
               {
-                'text-[#EB5849] text-[42px] lg:max-xl:text-[36px] sm:max-lg:text-[32px] max-sm:text-[36px] ':
+                'text-[#EB5849] text-[42px] lg:max-xl:text-[36px] sm:max-lg:text-[32px] max-sm:text-[32px] ':
                   activeIndex === index,
               },
               { 'text-stone-500': activeIndex !== index },

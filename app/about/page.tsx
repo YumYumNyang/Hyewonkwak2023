@@ -3,7 +3,7 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div className="flex justify-around max-w-screen-xl px-10 pt-40 m-auto max-sm:flex-col-reverse">
+    <div className="flex justify-around items-start max-sm:items-center max-w-screen-xl px-10 py-40 max-sm:py-20 m-auto max-sm:flex-col-reverse">
       <div className="flex flex-col">
         <span>
           <span className="flex align-bottom">

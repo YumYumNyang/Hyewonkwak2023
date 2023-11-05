@@ -34,6 +34,7 @@
 		"notion-types": "^6.16.0",
 		"notion-utils": "^6.16.0",
 		"postprocessing": "^6.33.0",
+		"prismjs": "^1.29.0",
 		"r3f-perf": "^7.1.2",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
@@ -45,6 +46,7 @@
 	},
 	"devDependencies": {
 		"@tanstack/eslint-plugin-query": "^4.29.25",
+		"@types/prismjs": "^1.26.2",
 		"@types/three": "^0.155.1",
 		"autoprefixer": "^10.4.14",
 		"eslint-plugin-simple-import-sort": "^10.0.0",

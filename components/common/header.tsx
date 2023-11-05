@@ -22,21 +22,20 @@ const Header = () => {
   useEffect(() => {
     setDate(dayjs().format('YYYY MMM DD'))
   }, [])
-  
 
   return (
-    <header className="box-border fixed top-0 z-40 flex w-full h-20 font-sans border-b backdrop-blur">
+    <header className="box-border fixed top-0 z-40 flex items-start w-full h-20 max-sm:h-16 font-sans border-b backdrop-blur">
       <a
-        className="flex px-6 pt-6 space-x-2 md:pt-8 align-center md:px-10"
+        className="flex px-6 pt-6 max-sm:px-4 max-sm:pt-4 space-x-2 md:pt-8 items-start md:px-10"
         href="/"
       >
         <span className="text-[10px] font-bold">Hyewon Kwak</span>
         <span className="text-[10px]">creative developer</span>
       </a>
-      <div className="absolute flex justify-center w-full text-[10px] top-6">
+      <div className="absolute flex justify-center w-full text-[10px] top-6 max-sm:hidden">
         {date}
       </div>
-      <nav className="absolute flex justify-center w-full gap-4 text-sm sm:text-base top-12">
+      <nav className="absolute flex justify-center w-full gap-4 text-sm sm:text-base top-12 max-sm:top-10">
         {navLinks.map((link, index) => (
           <Link
             key={link.path}

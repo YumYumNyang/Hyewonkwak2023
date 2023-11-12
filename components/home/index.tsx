@@ -86,7 +86,7 @@ const Home = () => {
   return (
     <div
       ref={ref}
-      className="flex justify-end h-full max-w-screen-xl mx-auto max-sm:flex-col max-sm:justify-start"
+      className="relative flex justify-end h-full max-w-screen-xl mx-auto max-sm:flex-col max-sm:justify-start"
     >
       <div className="absolute left-0 z-10 top-[20vh] flex flex-col max-sm:top-[100px] pl-10 ">
         {content.map((item, index) => (

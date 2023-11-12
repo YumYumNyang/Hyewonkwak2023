@@ -76,6 +76,9 @@ dependencies:
   postprocessing:
     specifier: ^6.33.0
     version: 6.33.0(three@0.156.1)
+  prismjs:
+    specifier: ^1.29.0
+    version: 1.29.0
   r3f-perf:
     specifier: ^7.1.2
     version: 7.1.2(@react-three/fiber@8.14.1)(@types/three@0.155.1)(react-dom@18.2.0)(react@18.2.0)(three@0.156.1)
@@ -105,6 +108,9 @@ devDependencies:
   '@tanstack/eslint-plugin-query':
     specifier: ^4.29.25
     version: 4.32.1
+  '@types/prismjs':
+    specifier: ^1.26.2
+    version: 1.26.2
   '@types/three':
     specifier: ^0.155.1
     version: 0.155.1
@@ -1197,6 +1203,10 @@ packages:
   /@types/offscreencanvas@2019.7.1:
     resolution: {integrity: sha512-+HSrJgjBW77ALieQdMJvXhRZUIRN1597L+BKvsyeiIlHHERnqjcuOLyodK3auJ3Y3zRezNKtKAhuQWYJfEgFHQ==}
     dev: false
+
+  /@types/prismjs@1.26.2:
+    resolution: {integrity: sha512-/r7Cp7iUIk7gts26mHXD66geUC+2Fo26TZYjQK6Nr4LDfi6lmdRmMqM0oPwfiMhUwoBAOFe8GstKi2pf6hZvwA==}
+    dev: true
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}

@@ -47,7 +47,7 @@ const Travling = () => {
 
   return (
     <div ref={comp} className="flex flex-col">
-      <div className="item-1 flex flex-col items-end justify-start gap-2 pl-[400px] md:max-lg:pl-[280px] max-md:pl-[200px]">
+      <div className="item-1 flex flex-col items-end justify-start gap-2 pl-[400px] md:max-lg:pl-[280px] max-md:pl-[200px] max-sm:mt-[180px]">
         <div className="flex-grow-0 flex-shrink-0 w-[260px] h-[388px] md:max-lg:w-[195px] md:max-lg:h-[291px] max-md:w-[130px] max-md:h-[194px] relative overflow-hidden bg-white">
           <img
             alt="In London, 2023.08"

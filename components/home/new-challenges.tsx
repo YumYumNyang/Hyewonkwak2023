@@ -25,7 +25,7 @@ const NewChallenges = () => {
   return (
     <div
       ref={comp}
-      className="item-1 relative flex flex-col items-center justify-start gap-2 mt-[100px]"
+      className="item-1 relative flex flex-col items-center justify-start gap-2 mt-[100px] max-sm:mt-[180px]"
     >
       <HomeDesc
         delay={0.2}

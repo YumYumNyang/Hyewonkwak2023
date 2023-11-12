@@ -5,7 +5,6 @@ import { Badge } from '../ui/badge'
 import dayjs from 'dayjs'
 
 const ListItem = ({ post }: { post: Post }) => {
-  console.log(post)
   return (
     <Link
       key={post.id}

@@ -1,3 +1,4 @@
+import useGsapContext from '@/lib/hooks/useGsapContext'
 import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useEffect, useLayoutEffect, useRef } from 'react'
@@ -5,8 +6,9 @@ import HomeDesc from '../ui/home-desc'
 
 const Creating = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
+    ctx.add(() => {
       gsap
         .timeline()
         .from(
@@ -29,8 +31,7 @@ const Creating = () => {
           },
           '<+0.3',
         )
-    }, comp)
-
+    })
     return () => ctx.revert() // cleanup
   }, [])
   return (
@@ -43,15 +44,12 @@ const Creating = () => {
             className="object-cover h-full brightness-100"
           />
         </div>
-        <p className="flex-grow-0 flex-shrink-0 text-[9px] md:text-[12px] font-medium text-left text-[#4851c4]">
-          <HomeDesc
-            delay={0.4}
-            desc={
-              "I'm frontend developer, \n but I'm also interested in design. \n I like creating something."
-            }
-          />
-          <br />
-        </p>
+        <HomeDesc
+          delay={0.4}
+          desc={
+            "I'm frontend developer, \n but I'm also interested in design. \n I like creating something."
+          }
+        />
       </div>
       <div className="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2 pl-[180px] md:max-lg:pl-[100px] sm:max-md:pl-[40px] max-sm:pl-[100px] mt-10">
         <div className="item-2 flex-grow-0 flex-shrink-0 w-[400px] h-[400px] md:max-lg:w-[360px] md:max-lg:h-[360px] sm:max-md:w-[280px] sm:max-md:h-[280px]  max-sm:w-[180px] max-sm:h-[180px] relative overflow-hidden bg-white">

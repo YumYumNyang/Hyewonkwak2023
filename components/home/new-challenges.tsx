@@ -2,10 +2,12 @@ import Image from 'next/image'
 import gsap from 'gsap'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
+import useGsapContext from '@/lib/hooks/useGsapContext'
 const NewChallenges = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
+    ctx.add(() => {
       gsap.timeline().from(
         '.item-1 img',
         {
@@ -16,7 +18,7 @@ const NewChallenges = () => {
         },
         '0.4',
       )
-    }, comp)
+    })
 
     return () => ctx.revert() // cleanup
   }, [])

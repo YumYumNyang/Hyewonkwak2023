@@ -19,6 +19,7 @@ import Water from './water'
 import cx from 'classnames'
 import useImageLoad from '@/lib/hooks/useImageLoad'
 import gsap from 'gsap'
+import { useCallback } from 'react'
 const images = [
   'all-kinds-of-drinks/01.png',
   'all-kinds-of-drinks/02.png',
@@ -46,7 +47,7 @@ const images = [
 ]
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(8)
-  const imageLoaded = useImageLoad(images)
+  // const imageLoaded = useImageLoad(images)
   const content = useMemo(() => {
     return [
       { title: 'Creating', component: <Creating /> },
@@ -63,29 +64,26 @@ const Home = () => {
     ]
   }, [])
   const ref = useRef<HTMLDivElement>(null)
-  useLayoutEffect(() => {
-    if (imageLoaded) {
-      let ctx = gsap.context(() => {
-        gsap.timeline().fromTo(
-          '.title',
-          {
-            paddingTop: '100%',
-          },
-          {
-            paddingTop: '0%',
-            stagger: 0.2,
-            ease: 'power2.out',
-            duration: 0.8,
-          },
-        )
-      }, ref)
-      return () => ctx.revert() // cleanup
-    }
-  }, [imageLoaded])
 
-  return !imageLoaded ? (
-    <div>loading...</div>
-  ) : (
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.timeline().fromTo(
+        '.title',
+        {
+          paddingTop: '100%',
+        },
+        {
+          paddingTop: '0%',
+          stagger: 0.2,
+          ease: 'power2.out',
+          duration: 0.8,
+        },
+      )
+    }, ref)
+    return () => ctx.revert() // cleanup
+  }, [])
+
+  return (
     <div
       ref={ref}
       className="flex justify-end h-full max-w-screen-xl mx-auto max-sm:flex-col max-sm:justify-start"
@@ -95,9 +93,9 @@ const Home = () => {
           <h1
             onClick={() => setActiveIndex(index)}
             className={cx(
-              `flex items-center overflow-hidden whitespace-nowrap transition-[font-size] duration-500 ease-out origin-left hover:text-[#EB5849] h-[50px] hover:text-[42px] pt-1 text-[32px] font-medium text-left cursor-pointer lg:max-xl:text-[28px]   lg:max-xl:hover:text-[36px] lg:max-xl:h-[42px] sm:max-lg:text-[24px]  sm:max-lg:hover:text-[32px] sm:max-lg:h-[38px]  max-sm:text-[28px] max-sm:hover:text-[36px] max-sm:h-[42px]`,
+              `flex items-center overflow-hidden whitespace-nowrap transition-[font-size] duration-500 ease-out origin-left hover:text-[#EB5849] h-[50px] hover:text-[42px] pt-1 text-[32px] font-medium text-left cursor-pointer lg:max-xl:text-[28px]   lg:max-xl:hover:text-[36px] lg:max-xl:h-[42px] sm:max-lg:text-[24px]  sm:max-lg:hover:text-[32px] sm:max-lg:h-[38px]  max-sm:text-[24px] max-sm:hover:text-[32px] max-sm:h-[38px]`,
               {
-                'text-[#EB5849] text-[42px] lg:max-xl:text-[36px] sm:max-lg:text-[32px] max-sm:text-[36px] ':
+                'text-[#EB5849] text-[42px] lg:max-xl:text-[36px] sm:max-lg:text-[32px] max-sm:text-[32px] ':
                   activeIndex === index,
               },
               { 'text-stone-500': activeIndex !== index },

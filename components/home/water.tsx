@@ -1,3 +1,4 @@
+import useGsapContext from '@/lib/hooks/useGsapContext'
 import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
@@ -5,31 +6,32 @@ import HomeDesc from '../ui/home-desc'
 
 const Water = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap
-        .timeline()
-        .from(
-          '.item-2 img',
-          {
-            translateX: '-100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.4,
-          },
-          '0.4',
-        )
-        .from(
-          '.item-1 img',
-          {
-            translateX: '-110%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.4,
-          },
-          '<+0.2',
-        )
-    }, comp)
+    ctx.add(() => {
+     gsap
+       .timeline()
+       .from(
+         '.item-2 img',
+         {
+           translateX: '-100%',
+           filter: 'brightness(0.4)',
+           ease: 'power2.out',
+           duration: 1.4,
+         },
+         '0.4',
+       )
+       .from(
+         '.item-1 img',
+         {
+           translateX: '-110%',
+           filter: 'brightness(0.4)',
+           ease: 'power2.out',
+           duration: 1.4,
+         },
+         '<+0.2',
+       )
+   })
   })
   return (
     <div

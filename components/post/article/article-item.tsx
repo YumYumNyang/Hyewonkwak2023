@@ -13,10 +13,11 @@ const ArticleItem = async ({
   posts: Post[]
   slug: string
 }) => {
-  const postId = posts.filter((post: Post) => post.slug[0] == slug)[0]?.id
-  if (postId) {
+  const post = posts.filter((post: Post) => post.slug[0] == slug)[0]
+  if (post) {
+    const postId = post?.id
     const postRecordMap = await api.getPage(postId)
-    return <ArticleRenderer recordMap={postRecordMap} />
+    return <ArticleRenderer post={post} recordMap={postRecordMap} />
   }
 }
 

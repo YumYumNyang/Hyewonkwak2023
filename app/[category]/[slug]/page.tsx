@@ -16,7 +16,7 @@ const PostItem = async ({
 
   const categorizedPosts = {
     /* @ts-ignore */
-    article: <ArticleItem slug={params.slug} posts={posts.work} />,
+    article: <ArticleItem slug={params.slug} posts={posts.article} />,
     /* @ts-ignore */
     record: <RecordList slug={params.slug} posts={posts.record} />,
     /* @ts-ignore */

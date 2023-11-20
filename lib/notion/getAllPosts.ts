@@ -50,8 +50,8 @@ export const getAllPosts = cache(async () => {
     await Promise.all(PagePromises)
     // exclude pages that have to be hidden ans sort by date
     const postedPosts = filterPosts(data).sort((a: any, b: any) => {
-      const dateA: any = new Date(a?.date?.start_date || a.createdTime)
-      const dateB: any = new Date(b?.date?.start_date || b.createdTime)
+      const dateA: any = new Date(a?.date || a.createdTime)
+      const dateB: any = new Date(b?.date || b.createdTime)
       return dateB - dateA
     })
 

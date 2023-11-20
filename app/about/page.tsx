@@ -28,8 +28,7 @@ const About = () => {
           <span>NEXON KOREA</span>
           <span>Frontend Developer | 2022+</span>
           <span>Ninehire</span>
-          <span>Frontend developer Intern</span>
-          <span>2020-2021</span>
+          <span>Frontend developer Intern | 2020-2021</span>
         </span>
         <span className="flex flex-col py-4">
           <h2 className="font-medium uppercase text-md">skills</h2>
@@ -52,7 +51,7 @@ const About = () => {
         </span>
         <span className="flex flex-col py-4">
           <h2 className="font-medium uppercase text-md">links</h2>
-          <span>Github</span>
+          <a href="https://github.com/YumYumNyang">Github</a>
         </span>
       </div>
       <div className="my-10 flex-grow-0 flex-shrink-0 w-[400px] h-[300px] md:max-lg:w-[360px] md:max-lg:h-[270px] max-md:w-[320px] max-md:h-[240px] relative overflow-hidden bg-white">

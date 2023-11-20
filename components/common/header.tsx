@@ -40,7 +40,10 @@ const Header = () => {
           <Link
             key={link.path}
             className={`transition duration-200 hover: ${
-              pathname !== link.path ? 'blur-[1px]' : 'blur-none'
+              pathname.indexOf(link.path) === -1 ||
+              (link.path === '/' && pathname !== '/')
+                ? 'blur-[1px]'
+                : 'blur-none'
             } font-bold hover:blur-none hover:scale-110`}
             href={link.path}
           >

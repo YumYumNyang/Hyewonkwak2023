@@ -23,7 +23,7 @@ import { useCallback } from 'react'
 const images = [
   'all-kinds-of-drinks/01.png',
   'all-kinds-of-drinks/02.png',
-  'beautiful-things/01.jpeg',
+  'beautiful-things/01.png',
   'beautiful-things/02.png',
   'beautiful-things/03.png',
   'creating/01.png',

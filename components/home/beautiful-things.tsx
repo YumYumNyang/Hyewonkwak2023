@@ -51,7 +51,7 @@ const BeautifulThings = () => {
         <div className="flex-grow-0 flex-shrink-0 w-[620px] h-[320px] md:max-lg:w-[465px] md:max-lg:h-[240px] max-md:w-[310px] max-md:h-[160px] overflow-hidden bg-white">
           <img
             alt=" In Natalie Karpushenko photo exhibition 2023.05"
-            src="./beautiful-things/01.jpeg"
+            src="./beautiful-things/01.png"
             className="object-cover h-full brightness-100"
           />
         </div>

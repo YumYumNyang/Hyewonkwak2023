@@ -21,7 +21,6 @@ import cx from 'classnames'
 import useImageLoad from '@/lib/hooks/useImageLoad'
 import gsap from 'gsap'
 import { useCallback } from 'react'
-import Loading from '@/app/loading'
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const content = useMemo(() => {
@@ -83,9 +82,7 @@ const Home = () => {
         ))}
       </div>
       <div className="content relative flex flex-col h-full items-start mx-[32px] my-[10vh] max-sm:mx-auto max-sm:mt-[340px]">
-        <Suspense fallback={<Loading />}>
-          {content[activeIndex].component}
-        </Suspense>
+        {content[activeIndex].component}
       </div>
     </div>
   )

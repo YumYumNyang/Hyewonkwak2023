@@ -3,36 +3,44 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
+import useImageLoad from '@/lib/hooks/useImageLoad'
 
 const Water = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const imageLoaded = useImageLoad(comp)
   const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    ctx.add(() => {
-     gsap
-       .timeline()
-       .from(
-         '.item-2 img',
-         {
-           translateX: '-100%',
-           filter: 'brightness(0.4)',
-           ease: 'power2.out',
-           duration: 1.4,
-         },
-         '0.4',
-       )
-       .from(
-         '.item-1 img',
-         {
-           translateX: '-110%',
-           filter: 'brightness(0.4)',
-           ease: 'power2.out',
-           duration: 1.4,
-         },
-         '<+0.2',
-       )
-   })
-  })
+    if (imageLoaded) {
+      ctx.add(() => {
+        gsap
+          .timeline()
+          .to(comp.current, { opacity: 1 })
+          .from(
+            '.item-2 img',
+            {
+              translateX: '-100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.4,
+            },
+            '0.4',
+          )
+          .from(
+            '.item-1 img',
+            {
+              translateX: '-110%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.4,
+            },
+            '<+0.2',
+          )
+      })
+    } else {
+      gsap.set(comp.current, { opacity: 0 })
+    }
+    return () => ctx.revert() // cleanup
+  }, [ctx, imageLoaded])
   return (
     <div
       ref={comp}
@@ -47,6 +55,7 @@ const Water = () => {
           />
         </div>
         <HomeDesc
+          startAnimation={imageLoaded}
           delay={1.2}
           className="justify-end"
           desc={'In okinawa 2023.05 '}
@@ -54,6 +63,7 @@ const Water = () => {
       </div>
       <div className="relative flex flex-col items-start justify-start flex-grow-0 flex-shrink-0 gap-2 item-2">
         <HomeDesc
+          startAnimation={imageLoaded}
           delay={0.4}
           desc={
             'I love swimming. \n Being in water makes me comfortable, \n relieve stress, refresh my mind.'

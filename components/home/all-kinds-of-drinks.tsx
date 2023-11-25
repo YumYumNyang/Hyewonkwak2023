@@ -3,37 +3,44 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
+import useImageLoad from '@/lib/hooks/useImageLoad'
 
 const AllKindsofDrinks = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const imageLoaded = useImageLoad(comp)
   const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    ctx.add(() => {
-      gsap
-        .timeline()
-        .from(
-          '.item-1 img',
-          {
-            translateY: '100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.4,
-          },
-          '0.4',
-        )
-        .from(
-          '.item-2 img',
-          {
-            translateY: '100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.8,
-          },
-          '<+0.4',
-        )
-    })
+    if (imageLoaded) {
+      ctx.add(() => {
+        gsap
+          .timeline()
+          .to(comp.current, { opacity: 1 })
+          .from(
+            '.item-1 img',
+            {
+              translateY: '100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.4,
+            },
+            '0.4',
+          )
+          .from(
+            '.item-2 img',
+            {
+              translateY: '100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.8,
+            },
+            '<+0.4',
+          )
+      })
+    } else {
+      gsap.set(comp.current, { opacity: 0 })
+    }
     return () => ctx.revert() // cleanup
-  }, [])
+  }, [ctx, imageLoaded])
   return (
     <div
       ref={comp}
@@ -41,6 +48,7 @@ const AllKindsofDrinks = () => {
     >
       <div className="item-1 flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2 pt-[431px] w-[320px] md:max-lg:w-[240px] sm:max-md:w-[200px] max-sm:w-[180px] max-sm:pt-[240px] ">
         <HomeDesc
+          startAnimation={imageLoaded}
           delay={0.4}
           desc={`I enjoy all kinds of drinks. \n I especially like “Real Shochu” and “gin”.`}
         />
@@ -61,7 +69,11 @@ const AllKindsofDrinks = () => {
             className="object-cover h-full brightness-100"
           />
         </div>
-        <HomeDesc delay={1} desc="In orion beer factory. 2023.05" />
+        <HomeDesc
+          startAnimation={imageLoaded}
+          delay={1}
+          desc="In orion beer factory. 2023.05"
+        />
       </div>
     </div>
   )

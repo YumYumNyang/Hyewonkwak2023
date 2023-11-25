@@ -3,38 +3,44 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
+import useImageLoad from '@/lib/hooks/useImageLoad'
 
 const FocusingOnSomething = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const imageLoaded = useImageLoad(comp)
   const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    ctx.add(() => {
-      gsap
-        .timeline()
-        .from(
-          '.item-1 img',
-          {
-            translateY: '-100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.4,
-          },
-          '0.4',
-        )
-        .from(
-          '.item-2 img',
-          {
-            translateY: '100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.0,
-          },
-          '<+0.4',
-        )
-    })
-
+    if (imageLoaded) {
+      ctx.add(() => {
+        gsap
+          .timeline()
+          .to(comp.current, { opacity: 1 })
+          .from(
+            '.item-1 img',
+            {
+              translateY: '-100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.4,
+            },
+            '0.4',
+          )
+          .from(
+            '.item-2 img',
+            {
+              translateY: '100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.0,
+            },
+            '<+0.4',
+          )
+      })
+    } else {
+      gsap.set(comp.current, { opacity: 0 })
+    }
     return () => ctx.revert() // cleanup
-  }, [])
+  }, [ctx, imageLoaded])
   return (
     <div
       ref={comp}
@@ -42,6 +48,7 @@ const FocusingOnSomething = () => {
     >
       <div className="item-1 flex flex-col justify-start items-start gap-2 pl-[180px] sm:max-md:pl-[100px] max-sm:pl-[80px]">
         <HomeDesc
+          startAnimation={imageLoaded}
           delay={0.6}
           desc={'I can find real fun in the moment of immersion.'}
         />

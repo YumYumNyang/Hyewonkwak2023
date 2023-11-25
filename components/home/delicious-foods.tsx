@@ -3,48 +3,54 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
+import useImageLoad from '@/lib/hooks/useImageLoad'
 
 const DeliciousFoods = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const imageLoaded = useImageLoad(comp)
   const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    ctx.add(() => {
-      gsap
-        .timeline()
-        .from(
-          '.item-1 img',
-          {
-            translateY: '-100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.4,
-          },
-          '0.4',
-        )
-        .from(
-          '.item-2 img',
-          {
-            translateX: '-100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.0,
-          },
-          '<+0.4',
-        )
-        .from(
-          '.item-3 img',
-          {
-            translateY: '-100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.4,
-          },
-          '<+0.4',
-        )
-    })
-
+    if (imageLoaded) {
+      ctx.add(() => {
+        gsap
+          .timeline()
+          .to(comp.current, { opacity: 1 })
+          .from(
+            '.item-1 img',
+            {
+              translateY: '-100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.4,
+            },
+            '0.4',
+          )
+          .from(
+            '.item-2 img',
+            {
+              translateX: '-100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.0,
+            },
+            '<+0.4',
+          )
+          .from(
+            '.item-3 img',
+            {
+              translateY: '-100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.4,
+            },
+            '<+0.4',
+          )
+      })
+    } else {
+      gsap.set(comp.current, { opacity: 0 })
+    }
     return () => ctx.revert() // cleanup
-  }, [])
+  }, [ctx, imageLoaded])
   return (
     <div
       ref={comp}
@@ -52,6 +58,7 @@ const DeliciousFoods = () => {
     >
       <div className="item-1 flex flex-col justify-end items-end pl-[368px] md:max-lg:pl-[268px] sm:max-md:pl-[208px] max-sm:pl-[0px]  max-sm:mr-[80px] top-0 gap-2">
         <HomeDesc
+          startAnimation={imageLoaded}
           className="justify-end"
           delay={0.4}
           desc={' my fav burgurshop in yangjae.'}
@@ -66,6 +73,7 @@ const DeliciousFoods = () => {
       </div>
       <div className="item-2 flex flex-col justify-start items-start pl-[-2px] max-sm:pl-[80px] gap-2">
         <HomeDesc
+          startAnimation={imageLoaded}
           delay={0.8}
           desc={'I’m interested in foods from different countries.'}
         />
@@ -79,6 +87,7 @@ const DeliciousFoods = () => {
       </div>
       <div className="item-3 flex flex-col justify-start items-end pl-[196px] sm:max-lg:pl-[86px] max-sm:pl-[136px] gap-2 max-sm:pr-[32px]">
         <HomeDesc
+          startAnimation={imageLoaded}
           className="justify-end"
           delay={1.2}
           desc={

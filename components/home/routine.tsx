@@ -3,38 +3,45 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
+import useImageLoad from '@/lib/hooks/useImageLoad'
 
 const Routine = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const imageLoaded = useImageLoad(comp)
 
   const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    ctx.add(() => {
-      gsap
-        .timeline()
-        .from(
-          '.item-1 img',
-          {
-            translateY: '-100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.4,
-          },
-          '0.4',
-        )
-        .from(
-          '.item-2 img',
-          {
-            translateY: '100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.0,
-          },
-          '<+0.4',
-        )
-    })
+    if (imageLoaded) {
+      ctx.add(() => {
+        gsap
+          .timeline()
+          .to(comp.current, { opacity: 1 })
+          .from(
+            '.item-1 img',
+            {
+              translateY: '-100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.4,
+            },
+            '0.4',
+          )
+          .from(
+            '.item-2 img',
+            {
+              translateY: '100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.0,
+            },
+            '<+0.4',
+          )
+      })
+    } else {
+      gsap.set(comp.current, { opacity: 0 })
+    }
     return () => ctx.revert() // cleanup
-  }, [])
+  }, [ctx, imageLoaded])
 
   return (
     <div
@@ -43,6 +50,7 @@ const Routine = () => {
     >
       <div className="relative flex flex-col items-start justify-start flex-grow-0 flex-shrink-0 gap-2 item-1">
         <HomeDesc
+          startAnimation={imageLoaded}
           delay={0.4}
           desc={
             'Routine makes me sustain healthy life. \n I go swimming every twice a week.'
@@ -65,6 +73,7 @@ const Routine = () => {
           />
         </div>
         <HomeDesc
+          startAnimation={imageLoaded}
           className="justify-end"
           delay={1.0}
           desc={'before starting work, I drink a cup of coffee.'}

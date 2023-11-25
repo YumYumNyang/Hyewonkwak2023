@@ -1,4 +1,5 @@
 import React, {
+  Suspense,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -20,34 +21,9 @@ import cx from 'classnames'
 import useImageLoad from '@/lib/hooks/useImageLoad'
 import gsap from 'gsap'
 import { useCallback } from 'react'
-const images = [
-  'all-kinds-of-drinks/01.png',
-  'all-kinds-of-drinks/02.png',
-  'beautiful-things/01.png',
-  'beautiful-things/02.png',
-  'beautiful-things/03.png',
-  'creating/01.png',
-  'creating/02.png',
-  'delicious-food/01.png',
-  'delicious-food/02.png',
-  'delicious-food/03.png',
-  'focusing-on-something/01.png',
-  'focusing-on-something/02.png',
-  'morning-coffee/01.png',
-  'morning-coffee/02.png',
-  'new-challenges/01.png',
-  'routine/01.png',
-  'routine/02.png',
-  'sunshine/01.png',
-  'travling/01.png',
-  'travling/02.png',
-  'travling/03.png',
-  'water/01.png',
-  'water/02.png',
-]
+import Loading from '@/app/loading'
 const Home = () => {
-  const [activeIndex, setActiveIndex] = useState(8)
-  // const imageLoaded = useImageLoad(images)
+  const [activeIndex, setActiveIndex] = useState(0)
   const content = useMemo(() => {
     return [
       { title: 'Creating', component: <Creating /> },
@@ -70,12 +46,12 @@ const Home = () => {
       gsap.timeline().fromTo(
         '.title',
         {
-          paddingTop: '100%',
+          translateY: '100%',
         },
         {
-          paddingTop: '0%',
+          translateY: '0%',
           stagger: 0.2,
-          ease: 'power2.out',
+          ease: 'power4.out',
           duration: 0.8,
         },
       )
@@ -106,8 +82,10 @@ const Home = () => {
           </h1>
         ))}
       </div>
-      <div className="content relative flex flex-col items-start mx-[32px] py-[10vh] max-sm:mx-auto max-sm:mt-[340px]">
-        {content[activeIndex].component}
+      <div className="content relative flex flex-col h-full items-start mx-[32px] my-[10vh] max-sm:mx-auto max-sm:mt-[340px]">
+        <Suspense fallback={<Loading />}>
+          {content[activeIndex].component}
+        </Suspense>
       </div>
     </div>
   )

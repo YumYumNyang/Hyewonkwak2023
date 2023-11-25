@@ -1,25 +1,30 @@
 import gsap from 'gsap'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 
 const HomeDesc = ({
   delay,
   desc,
+  startAnimation,
   className,
 }: {
-  delay?: number
+  delay: number
   desc: string
+  startAnimation?: boolean
   className?: string
 }) => {
   const ref = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    if (delay && ref.current) {
-      gsap.from(ref.current.querySelectorAll('.split-text'), {
-        translateY: '100%',
-        stagger: 0.1,
-        delay: delay,
-      })
+    if (ref.current) {
+      const texts = gsap.utils.toArray('.split-text', ref.current)
+      if (startAnimation)
+        gsap.from(texts, {
+          translateY: '100%',
+          stagger: 0.1,
+          delay: delay,
+        })
     }
-  }, [ref, delay])
+  }, [startAnimation, ref, delay])
 
   return (
     <div
@@ -32,7 +37,7 @@ const HomeDesc = ({
         ) : (
           <span
             key={index}
-            className="flex h-[11px] md:h-[14px] overflow-y-hidden"
+            className="flex h-[11px] md:h-[18px] overflow-y-hidden"
           >
             <span className="split-text">{descEl} </span>
           </span>

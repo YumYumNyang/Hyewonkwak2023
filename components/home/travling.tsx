@@ -3,47 +3,54 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
+import useImageLoad from '@/lib/hooks/useImageLoad'
 
 const Travling = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const imageLoaded = useImageLoad(comp)
   const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    ctx.add(() => {
-      gsap
-        .timeline()
-        .from(
-          '.item-1 img',
-          {
-            translateY: '-100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.4,
-          },
-          '0.4',
-        )
-        .from(
-          '.item-2 img',
-          {
-            translateY: '100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.0,
-          },
-          '<+0.4',
-        )
-        .from(
-          '.item-3 img',
-          {
-            translateY: '100%',
-            filter: 'brightness(0.4)',
-            ease: 'power2.out',
-            duration: 1.0,
-          },
-          '<+0.4',
-        )
-    })
+    if (imageLoaded) {
+      ctx.add(() => {
+        gsap
+          .timeline()
+          .to(comp.current, { opacity: 1 })
+          .from(
+            '.item-1 img',
+            {
+              translateY: '-100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.4,
+            },
+            '0.4',
+          )
+          .from(
+            '.item-2 img',
+            {
+              translateY: '100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.0,
+            },
+            '<+0.4',
+          )
+          .from(
+            '.item-3 img',
+            {
+              translateY: '100%',
+              filter: 'brightness(0.4)',
+              ease: 'power2.out',
+              duration: 1.0,
+            },
+            '<+0.4',
+          )
+      })
+    } else {
+      gsap.set(comp.current, { opacity: 0 })
+    }
     return () => ctx.revert() // cleanup
-  }, [])
+  }, [ctx, imageLoaded])
 
   return (
     <div ref={comp} className="flex flex-col">
@@ -56,6 +63,7 @@ const Travling = () => {
           />
         </div>
         <HomeDesc
+          startAnimation={imageLoaded}
           delay={0.4}
           desc={'In London, 2023.08'}
           className="justify-end"
@@ -63,7 +71,11 @@ const Travling = () => {
       </div>
       <div className="flex items-end gap-4">
         <div className="flex flex-col items-start justify-start gap-2 item-2">
-          <HomeDesc delay={0.8} desc={'In Paris, 2023.08'} />
+          <HomeDesc
+            startAnimation={imageLoaded}
+            delay={0.8}
+            desc={'In Paris, 2023.08'}
+          />
           <div className="flex-grow-0 flex-shrink-0 w-[260px] h-[460px] md:max-lg:w-[195px] md:max-lg:h-[345px] max-md:w-[130px] max-md:h-[230px] relative overflow-hidden bg-white">
             <img
               alt="In Paris, 2023.08"
@@ -73,7 +85,11 @@ const Travling = () => {
           </div>
         </div>
         <div className="flex flex-col items-end justify-start gap-2 item-3">
-          <HomeDesc delay={1.2} desc={'what a beautiful sunset!'} />
+          <HomeDesc
+            startAnimation={imageLoaded}
+            delay={1.2}
+            desc={'what a beautiful sunset!'}
+          />
           <div className="flex-grow-0 flex-shrink-0 w-[160px] h-[268px] md:max-lg:w-[120px] md:max-lg:h-[207px] max-md:w-[80px] max-md:h-[134px] relative overflow-hidden bg-white">
             <img
               alt="what a beautiful sunset!"

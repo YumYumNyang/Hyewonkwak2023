@@ -3,26 +3,31 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
+import useImageLoad from '@/lib/hooks/useImageLoad'
 
 const Sunshine = () => {
   const comp = useRef<HTMLDivElement>(null)
+  const imageLoaded = useImageLoad(comp)
   const ctx = useGsapContext(comp)
   useLayoutEffect(() => {
-    ctx.add(() => {
-      gsap.timeline().from(
-        '.item-1 img',
-        {
-          translateY: '-100%',
-          filter: 'brightness(0.4)',
-          ease: 'power2.out',
-          duration: 1.8,
-        },
-        '0.4',
-      )
-    })
-
+    if (imageLoaded) {
+      ctx.add(() => {
+        gsap.timeline().to(comp.current, { opacity: 1 }).from(
+          '.item-1 img',
+          {
+            translateY: '-100%',
+            filter: 'brightness(0.4)',
+            ease: 'power2.out',
+            duration: 1.8,
+          },
+          '0.4',
+        )
+      })
+    } else {
+      gsap.set(comp.current, { opacity: 0 })
+    }
     return () => ctx.revert() // cleanup
-  }, [])
+  }, [ctx, imageLoaded])
   return (
     <div
       ref={comp}
@@ -36,6 +41,7 @@ const Sunshine = () => {
         />
       </div>
       <HomeDesc
+        startAnimation={imageLoaded}
         className="justify-end"
         delay={0.4}
         desc={'warm sunshine makes me feel alive.'}

@@ -1,6 +1,5 @@
 import useGsapContext from '@/lib/hooks/useGsapContext'
 import gsap from 'gsap'
-import Image from 'next/image'
 import React, { useLayoutEffect, useRef } from 'react'
 import HomeDesc from '../ui/home-desc'
 import useImageLoad from '@/lib/hooks/useImageLoad'

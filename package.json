@@ -28,7 +28,7 @@
 		"eslint-config-next": "13.4.10",
 		"gsap": "^3.12.2",
 		"leva": "^0.9.35",
-		"next": "13.4.10",
+		"next": "14.0.3",
 		"next-themes": "^0.2.1",
 		"notion-client": "^6.16.0",
 		"notion-types": "^6.16.0",

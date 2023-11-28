@@ -5,6 +5,10 @@ import Record from '@/components/post/record'
 import Work from '@/components/post/work'
 import { Category } from '@/types/notion'
 
+export async function generateStaticParams() {
+  return [{ category: 'article' }, { category: 'record' }, { category: 'work' }]
+}
+
 const Posts = async ({
   params,
 }: {

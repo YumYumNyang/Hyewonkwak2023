@@ -7,7 +7,7 @@ import dayjs from 'dayjs'
 import Pin from '@/components/icon/pin'
 
 const RecordList = async ({ posts, slug }: { slug: string; posts: Post[] }) => {
-  const postId = posts.filter((post: Post) => post.slug[0] == slug)[0]?.id
+  const postId = posts.filter((post: Post) => post.slug == slug)[0]?.id
   if (postId) {
     const postRecordMap = await api.getPage(postId)
     if (postRecordMap)
@@ -17,13 +17,13 @@ const RecordList = async ({ posts, slug }: { slug: string; posts: Post[] }) => {
             {posts.map((post: Post) => {
               return (
                 <div
-                  className="flex items-start my-20 max-sm:my-10 max-w-full"
+                  className="flex items-start max-w-full my-20 max-sm:my-10"
                   key={post.id}
                 >
-                  <div className="flex flex-shrink-0 w-40 max-sm:text-xs text-xl font-medium max-sm:w-10 text-left text-stone-700">
+                  <div className="flex flex-shrink-0 w-40 text-xl font-medium text-left max-sm:text-xs max-sm:w-10 text-stone-700">
                     {dayjs(post.date).format('YYYY MMM DD')}
                   </div>
-                  <Pin className="flex flex-shrink-0 z-10 mt-3" />
+                  <Pin className="z-10 flex flex-shrink-0 mt-3" />
                   <div className="flex flex-col w-[88%]">
                     <Link
                       className="ml-8 max-sm:ml-4"

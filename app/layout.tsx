@@ -4,19 +4,10 @@ import { ThemeProvider } from '@/components/common/theme-provider'
 import { getAllPosts } from '@/lib/notion/getAllPosts'
 import CameraFrame from '@/components/common/camera-frame'
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts()
-  return Object.values(posts).map((categorizedPosts) => {
-    categorizedPosts.map((post) => ({
-      category: post.category,
-      slug: [...post.slug],
-    }))
-  })
-}
-
 export const metadata: Metadata = {
-  title: 'Hyewon Kwak',
-  description: '',
+  title: 'Hyewon Kwak 2023',
+  description: 'welcome to my place',
+  metadataBase: new URL('https://hyewon-kwak.xyz'),
 }
 
 export default function RootLayout({

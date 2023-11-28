@@ -1,11 +1,11 @@
-import { Post } from '@/types/notion';
-import { useScroll } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
-import { useRouter } from 'next/navigation';
-import React, { Ref, useMemo, useRef } from 'react';
-import { Mesh } from 'three';
-import * as THREE from 'three';
-import { MathUtils } from 'three/src/math/MathUtils';
+import { Post } from '@/types/notion'
+import { useScroll } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber'
+import { useRouter } from 'next/navigation'
+import React, { Ref, useMemo, useRef } from 'react'
+import { Mesh } from 'three'
+import * as THREE from 'three'
+import { MathUtils } from 'three/src/math/MathUtils'
 const fragmentShader = `
     varying vec2 vUv;
     varying float vWave;
@@ -21,7 +21,7 @@ const fragmentShader = `
         vec3 texture = vec3(r, g, b);
         gl_FragColor = vec4(texture , 1.0);
     }
-    `;
+    `
 
 const vertexShader = `
     uniform float u_time;
@@ -44,13 +44,13 @@ const vertexShader = `
 
         gl_Position = projectedPosition;
     }
-`;
+`
 
 const WavePlane = ({ post, index }: { post: Post; index: number }) => {
-  const mesh = useRef<Mesh>(null!);
-  const hover = useRef<boolean>(false);
-  const c = new THREE.Color();
-  const router = useRouter();
+  const mesh = useRef<Mesh>(null!)
+  const hover = useRef<boolean>(false)
+  const c = new THREE.Color()
+  const router = useRouter()
   const uniforms = useMemo(
     () => ({
       u_time: {
@@ -60,43 +60,46 @@ const WavePlane = ({ post, index }: { post: Post; index: number }) => {
         value: new THREE.TextureLoader().load(
           post.cover
             ? post.cover
-            : 'https://www.notion.so/images/page-cover/met_silk_kashan_carpet.jpg'
+            : 'https://www.notion.so/images/page-cover/met_silk_kashan_carpet.jpg',
         ),
       },
       u_intensity: {
         value: 0.5,
       },
     }),
-    []
-  );
-  const { size } = useThree();
+    [],
+  )
+  const { size } = useThree()
   const scale = useMemo(
     () => Math.min(1280 / Math.max(size.width, size.height), 1),
-    [size]
-  );
-  console.log(scale);
+    [size],
+  )
   useFrame((state, delta) => {
-    const { clock } = state;
-    const material = mesh.current.material as THREE.ShaderMaterial;
-    material.uniforms.u_time.value = clock.getElapsedTime();
+    const { clock } = state
+    const material = mesh.current.material as THREE.ShaderMaterial
+    material.uniforms.u_time.value = clock.getElapsedTime()
     material.uniforms.u_intensity.value = MathUtils.lerp(
       material.uniforms.u_intensity.value,
       hover.current ? 1.7 : 0.5,
-      0.01
-    );
+      0.01,
+    )
     const newScale = MathUtils.damp(
       mesh.current.scale.x,
       hover.current ? 1.2 * scale : 1 * scale,
       5,
-      delta
-    );
-    mesh.current.scale.set(newScale, newScale, 1);
-  });
+      delta,
+    )
+    mesh.current.scale.set(newScale, newScale, 1)
+  })
 
   return (
     <mesh
       ref={mesh}
-      position={[(index % 2 ? -1 : 1) * 0.8 * scale, -1.2 * index * scale + 1, 10]}
+      position={[
+        (index % 2 ? -1 : 1) * 0.8 * scale,
+        -1.2 * index * scale + 1,
+        10,
+      ]}
       onPointerOver={() => (hover.current = true)}
       onPointerOut={() => (hover.current = false)}
       onClick={() => router.push(`work/${post.id}`)}
@@ -110,7 +113,7 @@ const WavePlane = ({ post, index }: { post: Post; index: number }) => {
         wireframe={false}
       />
     </mesh>
-  );
-};
+  )
+}
 
-export default WavePlane;
+export default WavePlane
